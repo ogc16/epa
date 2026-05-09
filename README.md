@@ -79,6 +79,13 @@ flutter build apk -t lib/main_rider.dart
 # Vendor APK
 flutter build apk -t lib/main_vendor.dart
 ```
+Or , to Output: customer.apk, rider.apk, vendor.apk (in build/app/outputs/flutter-apk/).
+```
+flutter build apk --flavor customer --target lib/main_customer.dart
+flutter build apk --flavor rider --target lib/main_rider.dart
+flutter build apk --flavor vendor --target lib/main_vendor.dart
+```
+
 
 ## Features
 
