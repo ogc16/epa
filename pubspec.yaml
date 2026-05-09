@@ -1,0 +1,37 @@
+name: epa
+description: EPA - Multi-vendor on-demand delivery platform (Customer, Rider, Vendor)
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  provider: ^6.1.1
+  http: ^1.2.0
+  shared_preferences: ^2.2.2
+  intl: ^0.19.0
+  google_fonts: ^6.1.0
+  geolocator: ^10.1.0
+  geocoding: ^2.1.1
+  cached_network_image: ^3.3.1
+  flutter_rating_bar: ^4.0.1
+  image_picker: ^1.0.7
+  carousel_slider: ^4.2.1
+  badges: ^3.1.2
+  shimmer: ^3.0.0
+  flutter_svg: ^2.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
