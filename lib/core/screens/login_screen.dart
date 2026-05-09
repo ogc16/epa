@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
 import '../models/user.dart';
 import '../theme/app_theme.dart';
+import 'forgot_password_screen.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     if (!mounted) return;
     if (success) {
-      Navigator.pushReplacementNamed(context, '/home');
+      // AuthWrapper will rebuild automatically via AuthService
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid credentials')),
@@ -136,7 +137,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 24),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const ForgotPasswordScreen(),
+                      ),
+                    ),
+                    child: const Text('Forgot Password?'),
+                  ),
+                ),
+                const SizedBox(height: 8),
                 SizedBox(
                   height: 52,
                   child: ElevatedButton(
@@ -149,6 +162,43 @@ class _LoginScreenState extends State<LoginScreen> {
                                 strokeWidth: 2, color: Colors.white),
                           )
                         : const Text('Sign In', style: TextStyle(fontSize: 16)),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Row(
+                  children: [
+                    Expanded(child: Divider()),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Text('or',
+                          style: TextStyle(color: AppTheme.textSecondary)),
+                    ),
+                    Expanded(child: Divider()),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  height: 52,
+                  child: OutlinedButton.icon(
+                    onPressed: () async {
+                      final auth = context.read<AuthService>();
+                      await auth.signInWithGoogle(widget.role);
+                    },
+                    icon: Container(
+                      width: 20,
+                      height: 20,
+                      alignment: Alignment.center,
+                      child: const Text('G',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.redAccent)),
+                    ),
+                    label: const Text('Sign in with Google'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppTheme.textPrimary,
+                      side: const BorderSide(color: AppTheme.borderColor),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),

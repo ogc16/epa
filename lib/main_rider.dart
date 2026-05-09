@@ -46,9 +46,9 @@ class _RiderAppState extends State<RiderApp> {
         title: 'EPA - Rider',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        home: const AuthWrapper(
+        home: AuthWrapper(
           role: UserRole.rider,
-          home: RiderDashboardScreen(),
+          home: const RiderDashboardScreen(),
         ),
       ),
     );

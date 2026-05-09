@@ -19,6 +19,26 @@ android {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
+    flavorDimensions += "app"
+
+    productFlavors {
+        create("customer") {
+            dimension = "app"
+            applicationIdSuffix = ".customer"
+            versionNameSuffix = "-customer"
+        }
+        create("rider") {
+            dimension = "app"
+            applicationIdSuffix = ".rider"
+            versionNameSuffix = "-rider"
+        }
+        create("vendor") {
+            dimension = "app"
+            applicationIdSuffix = ".vendor"
+            versionNameSuffix = "-vendor"
+        }
+    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.epa"
@@ -36,6 +56,16 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
+    }
+
+    applicationVariants.all {
+        val variant = this
+        variant.outputs
+            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
+            .forEach { output ->
+                val flavor = variant.flavorName.lowercase()
+                output.outputFileName = "$flavor.apk"
+            }
     }
 }
 

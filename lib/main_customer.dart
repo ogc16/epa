@@ -46,9 +46,9 @@ class _CustomerAppState extends State<CustomerApp> {
         title: 'EPA - Customer',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        home: const AuthWrapper(
+        home: AuthWrapper(
           role: UserRole.customer,
-          home: CustomerHomeScreen(),
+          home: const CustomerHomeScreen(),
         ),
       ),
     );

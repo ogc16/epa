@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
     if (!mounted) return;
     if (success) {
-      Navigator.pushReplacementNamed(context, '/home');
+      // AuthWrapper will rebuild automatically via AuthService
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Registration failed')),

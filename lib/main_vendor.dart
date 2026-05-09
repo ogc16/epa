@@ -46,9 +46,9 @@ class _VendorAppState extends State<VendorApp> {
         title: 'EPA - Vendor',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        home: const AuthWrapper(
+        home: AuthWrapper(
           role: UserRole.vendor,
-          home: VendorDashboardScreen(),
+          home: const VendorDashboardScreen(),
         ),
       ),
     );
